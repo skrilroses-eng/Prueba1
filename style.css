@@ -4,20 +4,22 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
-    margin: 0; /* Elimina el margen por defecto del body */
-    overflow: hidden; /* Evita barras de desplazamiento si la imagen es muy grande */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
     background-color: #f0f0f0;
 }
 
 h1 {
-    z-index: 1; /* Asegura que el título esté por encima de la imagen */
-    color: white; /* Para que el texto sea visible sobre la imagen */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra para mejor visibilidad */
+    z-index: 1;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-align: center; /* Asegura que el título se centre en cualquier pantalla */
+    padding: 0 20px; /* Pequeño padding para que no toque los bordes en móvil */
 }
 
 #surpriseButton {
-    z-index: 1; /* Asegura que el botón esté por encima de la imagen */
+    z-index: 1;
     padding: 15px 30px;
     font-size: 1.2em;
     cursor: pointer;
@@ -33,31 +35,34 @@ h1 {
 }
 
 .hidden {
-    display: none;
+    display: none !important; /* Usamos !important para asegurar que este display: none prevalezca */
 }
 
 #surpriseContent {
-    position: absolute; /* Permite posicionar la imagen libremente */
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw; /* Ocupa el 100% del ancho de la ventana */
-    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
-    display: flex; /* Para centrar la imagen dentro de este contenedor */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Para que la imagen no se desborde del contenedor */
+    overflow: hidden;
+
+    /* AQUI ESTÁN LOS CAMBIOS CLAVE */
+    /* Define un ancho máximo para el contenedor de la imagen */
+    max-width: 1200px; /* Por ejemplo, que no sea más ancha de 1200 píxeles */
+    margin: auto; /* Centra el contenedor en pantallas grandes si tiene max-width */
+    /* Fin de los cambios clave */
 }
 
 #surpriseContent img {
-    min-width: 100%; /* Asegura que la imagen cubra al menos el 100% del ancho */
-    min-height: 100%; /* Asegura que la imagen cubra al menos el 100% de la altura */
-    object-fit: cover; /* Recorta la imagen para que cubra todo, manteniendo la proporción */
-    position: absolute; /* Para que la imagen se posicione dentro de #surpriseContent */
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
     top: 0;
     left: 0;
-    /* Los siguientes estilos ya no son necesarios porque object-fit se encarga
-       border: 5px solid #fff;
-       box-shadow: 0 0 15px rgba(0,0,0,0.2);
-       border-radius: 10px;
-    */
+    width: 100%; /* Asegúrate de que la imagen siempre ocupe el 100% de su contenedor */
+    height: 100%;
 }
